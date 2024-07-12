@@ -43,7 +43,7 @@ namespace bangor
 	{
 	}
 
-      virtual ~Node()
+    virtual ~Node()
 	{
 	  if (m_right)
 	  {

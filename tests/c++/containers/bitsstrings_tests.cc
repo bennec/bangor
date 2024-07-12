@@ -33,9 +33,9 @@ namespace bangor
     {
       std::array<uint8_t, 4> D0_8 = { 0xD0, 0x00, 0x00, 0x00};
       std::array<uint8_t, 4> D189 = { 0xD1, 0x80, 0x00, 0x00};
+      std::array<uint8_t, 4> D109 = { 0xD1, 0x00, 0x00, 0x00};
       BitsStrings            bits;
       BitsStrings::Iterator  iter;
-      
       
       EXPECT_EQ  (bits.insert(0xD0000000, 8), BitsStrings::E_NOERR);
       
@@ -54,6 +54,15 @@ namespace bangor
       
       
       EXPECT_EQ(bits.insert(0xD1000000, 9), BitsStrings::E_NOERR);
+
+      iter = bits.begin();
+      EXPECT_TRUE(iter   != bits.end());
+      EXPECT_TRUE(*iter  == D189);      
+      EXPECT_TRUE(++iter != bits.end());
+      EXPECT_TRUE(*iter  == D109);      
+      EXPECT_TRUE(++iter != bits.end());    
+      EXPECT_TRUE(*iter  == D0_8);      
+      EXPECT_TRUE(++iter == bits.end());
     }
     
   }
